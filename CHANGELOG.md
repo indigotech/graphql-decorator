@@ -18,6 +18,7 @@
 - Added @After middleware decorator - [#56](https://github.com/indigotech/graphql-schema-decorator/pull/56) - [@marcelorisse](https://github.com/marcelorisse)
 - Bugfix - @After middleware changing return type - [#58](https://github.com/indigotech/graphql-schema-decorator/pull/58) - [@felipesabino](https://github.com/felipesabino)
 - Removed wrong comparison on description - [#60](https://github.com/indigotech/graphql-schema-decorator/pull/60) - [@askmon](https://github.com/askmon)
+- Bugfix - @Pagination middleware page info - [#61](https://github.com/indigotech/graphql-schema-decorator/pull/61) - [@marcelorisse](https://github.com/marcelorisse)
 
 ### Breaking changes
 
