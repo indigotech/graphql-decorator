@@ -10,7 +10,7 @@ export class OrderByTypeFactory {
     let valuesDict: { [name: string]: any; } = {};
     values.forEach((value: any) => {
       valuesDict[value.name] = {
-        description: value.description && value.description,
+        description: value.description,
       };
     });
     return new GraphQLEnumType({
