@@ -1,6 +1,5 @@
 ## master
 
-- Removed wrong comparison on description - [#60](https://github.com/indigotech/graphql-schema-decorator/pull/60) - [@askmon](https://github.com/askmon)
 - Added functional tests (to make sure resolvers are working properly) - [#34](https://github.com/indigotech/graphql-schema-decorator/pull/34) - [@felipesabino](https://github.com/felipesabino)
 - Review JSDoc for each decorator and its option argument - [#34](https://github.com/indigotech/graphql-schema-decorator/pull/34) - [@felipesabino](https://github.com/felipesabino)
 - Updated examples - [#34](https://github.com/indigotech/graphql-schema-decorator/pull/34) - [@felipesabino](https://github.com/felipesabino)
@@ -18,6 +17,7 @@
 - Added @InterfaceType decorator - [#46](https://github.com/indigotech/graphql-schema-decorator/pull/46) - [@felipesabino](https://github.com/felipesabino)
 - Added @After middleware decorator - [#56](https://github.com/indigotech/graphql-schema-decorator/pull/56) - [@marcelorisse](https://github.com/marcelorisse)
 - Bugfix - @After middleware changing return type - [#58](https://github.com/indigotech/graphql-schema-decorator/pull/58) - [@felipesabino](https://github.com/felipesabino)
+- Removed wrong comparison on description - [#60](https://github.com/indigotech/graphql-schema-decorator/pull/60) - [@askmon](https://github.com/askmon)
 
 ### Breaking changes
 
