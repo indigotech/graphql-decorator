@@ -397,7 +397,7 @@ class MutationType {
 *T.B.D.*
 
 ## Examples
-Please checkout [exmaples](https://github.com/Quramy/graphql-decorator/tree/master/examples) folder in this repository.
+Please checkout [examples](https://github.com/Quramy/graphql-decorator/tree/master/examples) folder in this repository.
 
 ## License
 This software is released under the MIT License, see LICENSE.txt.
