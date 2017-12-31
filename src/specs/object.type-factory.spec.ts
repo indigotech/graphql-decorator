@@ -78,4 +78,14 @@ describe('objectTypeFactory', function () {
     assert(GQLType.name === 'Obj');
     assert((GQLType.getFields().circle.type as graphql.GraphQLObjectType).getFields().circle.type instanceof graphql.GraphQLObjectType);
   });
+
+  it('allows thunk circular dependecies', function () {
+    @D.ObjectType()
+    class A { @D.Field({type: () => B}) circle: any; } // tslint:disable-line:no-use-before-declare
+    @D.ObjectType()
+    class B { @D.Field({type: () => A}) circle: any; }
+    const GQLType = objectTypeFactory(A);
+    assert(GQLType.name === 'A');
+    assert((GQLType.getFields().circle.type as graphql.GraphQLObjectType).getFields().circle.type instanceof graphql.GraphQLObjectType);
+  });
 });
