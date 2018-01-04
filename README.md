@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/indigotech/graphql-schema-decorator.svg?branch=master)](https://travis-ci.org/indigotech/graphql-schema-decorator)
 [![npm version](https://badge.fury.io/js/graphql-schema-decorator.svg)](https://badge.fury.io/js/graphql-schema-decorator)
+[![Help Contribute to Open Source](https://www.codetriage.com/indigotech/graphql-schema-decorator/badges/users.svg)](https://www.codetriage.com/indigotech/graphql-schema-decorator)
 
 ## Differences from graphql-decorator
 
