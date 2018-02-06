@@ -44,7 +44,11 @@ function convertType(typeFn: Function, metadata: FieldMetadata | ArgumentMetadat
       returnType = objectTypeFactory(typeFn, isInput);
     }
   } else {
-    returnType = metadata.type;
+    try {
+      returnType = typeof metadata.type === 'function' ? metadata.type() : metadata.type;
+    } catch (e) {
+      returnType = metadata.type;
+    }
 
     if (returnType && returnType.prototype && getMetadataArgsStorage().filterUnionTypeByClass(returnType).length > 0) {
       returnType = unionTypeFactory(returnType, isInput);

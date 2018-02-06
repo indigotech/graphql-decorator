@@ -36,8 +36,8 @@ describe('objectTypeFactory', function () {
     @D.ObjectType()
     class Obj { @D.Field() title: string; }
     const GQLType: any = objectTypeFactory(Obj);
-    assert(GQLType._typeConfig.name === 'Obj');
-    assert(GQLType._typeConfig.fields.title.type instanceof graphql.GraphQLScalarType);
+    assert(GQLType.name === 'Obj');
+    assert(GQLType.getFields().title.type instanceof graphql.GraphQLScalarType);
   });
 
   it('returns GraphQLInputObjectType with a class annotated by @InputObjectType', function () {
@@ -63,10 +63,29 @@ describe('objectTypeFactory', function () {
     class Obj { @D.Field() title: string; @D.Field({ type: undefined }) nested: {}; }
     try {
       const GQLType: any = objectTypeFactory(Obj, true);
+      GQLType.getFields();
       assert.fail();
     } catch (e) {
       const err = e as SchemaFactoryError;
       assert(err.type === SchemaFactoryErrorType.NO_FIELD);
     }
+  });
+
+  it('returns GraphQLObjectType if includes circular references', function () {
+    @D.ObjectType()
+    class Obj { @D.Field() circle: Obj; }
+    const GQLType = objectTypeFactory(Obj);
+    assert(GQLType.name === 'Obj');
+    assert((GQLType.getFields().circle.type as graphql.GraphQLObjectType).getFields().circle.type instanceof graphql.GraphQLObjectType);
+  });
+
+  it('allows thunk circular dependecies', function () {
+    @D.ObjectType()
+    class A { @D.Field({type: () => B}) circle: any; } // tslint:disable-line:no-use-before-declare
+    @D.ObjectType()
+    class B { @D.Field({type: () => A}) circle: any; }
+    const GQLType = objectTypeFactory(A);
+    assert(GQLType.name === 'A');
+    assert((GQLType.getFields().circle.type as graphql.GraphQLObjectType).getFields().circle.type instanceof graphql.GraphQLObjectType);
   });
 });
