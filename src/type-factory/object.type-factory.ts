@@ -46,7 +46,7 @@ export function objectTypeFactory(target: Function, isInput: boolean = false): g
                 SchemaFactoryErrorType.NO_FIELD);
           }
 
-          const fields = fieldMetadataList.reduce((map, fieldMetadata) => {
+          const fields = () => fieldMetadataList.reduce((map, fieldMetadata) => {
             let field = fieldTypeFactory(fieldMetadata.target, fieldMetadata.field, isInput);
             if (!field) {
               throw new SchemaFactoryError(`@ObjectType()'s ${fieldMetadata.field.name} is annotated by @Field() but no type could be inferred`,
