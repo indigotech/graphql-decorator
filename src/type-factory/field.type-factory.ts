@@ -34,7 +34,7 @@ function convertType(typeFn: Function, metadata: FieldMetadata | ArgumentMetadat
 
   if (!metadata.type) {
     if (typeFn === Number) {
-      returnType = graphql.GraphQLInt;     // FIXME or float?
+      returnType = graphql.GraphQLFloat;
     } else if (typeFn === String) {
       returnType = graphql.GraphQLString;
     } else if (typeFn === Boolean) {
