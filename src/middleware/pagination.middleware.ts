@@ -6,7 +6,8 @@ import { getMetadataBuilder } from '../metadata-builder';
 export function PaginationMiddleware(target: any, propertyKey: string, methodDescriptor: TypedPropertyDescriptor<any>): any {
   return {
     value: async function (...args: any[]) {
-      let [data, count] = await methodDescriptor.value.apply(this, args);
+      const data = await methodDescriptor.value.apply(this, args),
+            count = data.length;
 
       return getMetadataBuilder().buildFieldMetadata(target)
         .filter(metadata => metadata.property === propertyKey)
