@@ -19,18 +19,18 @@ describe('field specs', function () {
       clearFieldTypeCache();
     });
 
-    it('returns argumentConfigMap. The map has GraphQLInt type with a function which has number argument', function () {
+    it('returns argumentConfigMap. The map has GraphQLFloat type with a function which has number argument', function () {
       class Obj { @D.Field() m( @D.Arg({ name: 'input' }) input: number): void { } }
       const metadata = getMetadataBuilder().buildFieldMetadata(Obj.prototype)[0];
       const actual = resolverFactory(Obj, metadata, new Obj()).argumentConfigMap;
-      assert(actual['input'].type === graphql.GraphQLInt);
+      assert(actual['input'].type === graphql.GraphQLFloat);
     });
 
-    it('returns argumentConfigMap. The map has GraphQLInt type with a function which has Number argument', function () {
+    it('returns argumentConfigMap. The map has GraphQLFloat type with a function which has Number argument', function () {
       class Obj { @D.Field() m( @D.Arg({ name: 'input' }) input: Number): void { } }
       const metadata = getMetadataBuilder().buildFieldMetadata(Obj.prototype)[0];
       const actual = resolverFactory(Obj, metadata, new Obj()).argumentConfigMap;
-      assert(actual['input'].type === graphql.GraphQLInt);
+      assert(actual['input'].type === graphql.GraphQLFloat);
     });
 
     it('returns argumentConfigMap. The map has GraphQLString type with a function which has string argument', function () {
@@ -138,20 +138,20 @@ describe('field specs', function () {
         assert(actual === null);
       });
 
-      it('returns GraphQLInt with a class which has a number field', function () {
+      it('returns GraphQLFloat with a class which has a number field', function () {
         class Obj { @D.Field() count: number; }
         const metadata = getMetadataBuilder().buildFieldMetadata(Obj.prototype)[0];
         const actual = fieldTypeFactory(Obj, metadata);
         assert(actual.type instanceof graphql.GraphQLScalarType);
-        assert(actual.type.name === 'Int');
+        assert(actual.type.name === 'Float');
       });
 
-      it('returns GraphQLInt with a class which has a Number field', function () {
+      it('returns GraphQLFloat with a class which has a Number field', function () {
         class Obj { @D.Field() count: Number; }
         const metadata = getMetadataBuilder().buildFieldMetadata(Obj.prototype)[0];
         const actual = fieldTypeFactory(Obj, metadata);
         assert(actual.type instanceof graphql.GraphQLScalarType);
-        assert(actual.type.name === 'Int');
+        assert(actual.type.name === 'Float');
       });
 
       it('returns GraphQLString with a class which has a string field', function () {
