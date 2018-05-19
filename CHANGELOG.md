@@ -33,6 +33,7 @@
   - `@Description`
   - `@List`
   - `@NonNull`
+- Use float instead of int for :number type - [83](https://github.com/indigotech/graphql-schema-decorator/pull/83) - [pie6k](https://github.com/pie6k)
 
 ## 0.8.0
 
