@@ -8,8 +8,8 @@
   },
   "scripts": {
     "build": "rimraf lib && tsc",
-    "lint": "tslint \"src/**/*.ts\" --type-check --project ./tsconfig.json",
-    "lint:fix": "tslint --fix \"src/**/*.ts\" --type-check --project ./tsconfig.json",
+    "lint": "tslint \"src/**/*.ts\" --project ./tsconfig.json",
+    "lint:fix": "tslint --fix \"src/**/*.ts\" --project ./tsconfig.json",
     "test": "npm run build && npm run lint && mocha lib/**/*.spec.js",
     "watch": "tsc -w",
     "watch-test": "mocha lib/**/*.spec.js --watch"
@@ -26,21 +26,21 @@
   },
   "license": "MIT",
   "dependencies": {
-    "reflect-metadata": "0.1.9"
+    "reflect-metadata": "^0.1.12"
   },
   "peerDependencies": {
-    "graphql": "0.11.7"
+    "graphql": "0.13.2"
   },
   "devDependencies": {
-    "graphql": "0.11.7",
-    "mocha": "2.5.3",
-    "assert": "1.4.1",
-    "rimraf": "2.5.2",
-    "tslint": "5.1.0",
-    "typescript": "2.3.4",
-    "@types/graphql": "0.11.5",
-    "@types/mocha": "2.2.39",
-    "@types/node": "7.0.5"
+    "@types/graphql": "^0.13.1",
+    "@types/mocha": "^5.2.0",
+    "@types/node": "^10.0.8",
+    "assert": "^1.4.1",
+    "graphql": "^0.13.2",
+    "mocha": "^5.1.1",
+    "rimraf": "^2.5.2",
+    "tslint": "^5.1.0",
+    "typescript": "^2.3.4"
   },
   "typings": "lib/index.d.ts"
 }

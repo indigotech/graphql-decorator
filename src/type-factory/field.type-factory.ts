@@ -21,6 +21,14 @@ export interface ResolverHolder {
   argumentConfigMap: { [name: string]: any; };
 }
 
+export interface FieldType {
+  type?: any;
+  description?: string;
+  args?: any;
+  resolve?: Function;
+  subscribe?: Function;
+}
+
 let fieldTypeCache: { [key: string]: any } = {};
 
 export function clearFieldTypeCache() {
@@ -186,7 +194,7 @@ export function resolverFactory(
   };
 }
 
-export function fieldTypeFactory(target: Function, metadata?: FieldMetadata, isInput: boolean = false, isSubscription: boolean = false) {
+export function fieldTypeFactory(target: Function, metadata?: FieldMetadata, isInput: boolean = false, isSubscription: boolean = false): FieldType {
   if (!metadata) { return null; }
 
   let typeFn = Reflect.getMetadata('design:type', target.prototype, metadata.name) as Function;
@@ -228,7 +236,7 @@ export function fieldTypeFactory(target: Function, metadata?: FieldMetadata, isI
     type: fieldType,
     description: metadata.description,
     args: args,
-    resolve: resolveFn,
+    ...(resolveFn ? { resolve: resolveFn } : {}),
     subscribe: subscribeFn,
   };
 }
