@@ -19,6 +19,7 @@
 - Bugfix - @After middleware changing return type - [#58](https://github.com/indigotech/graphql-schema-decorator/pull/58) - [@felipesabino](https://github.com/felipesabino)
 - Removed wrong comparison on description - [#60](https://github.com/indigotech/graphql-schema-decorator/pull/60) - [@askmon](https://github.com/askmon)
 - Bugfix - @Pagination middleware page info - [#61](https://github.com/indigotech/graphql-schema-decorator/pull/61) - [@marcelorisse](https://github.com/marcelorisse)
+- Fixed circular references issues - [#68](https://github.com/indigotech/graphql-schema-decorator/pull/68) - [@Cactucs](https://github.com/Cactucs)
 
 ### Breaking changes
 
