@@ -1,3 +1,7 @@
+## This project is not being supported anymore
+
+This project was discontinued and will not be updated anymore. We recommend using [type-graphql](https://github.com/19majkel94/type-graphql), that covers most of this project's features and is being constantly updated and maintained.
+
 # Graphql-Schema-Decorator
 
 [![Build Status](https://travis-ci.org/indigotech/graphql-schema-decorator.svg?branch=master)](https://travis-ci.org/indigotech/graphql-schema-decorator)
