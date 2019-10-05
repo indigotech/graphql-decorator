@@ -1,6 +1,6 @@
 ## This project is not being supported anymore
 
-This project was discontinued and will not be updated anymore. We recommend using [type-graphql](https://github.com/19majkel94/type-graphql), that covers most of this project's features and is being constantly updated and maintained.
+This project was discontinued and will not be updated anymore. We recommend using [type-graphql](https://github.com/MichalLytek/type-graphql), that covers most of this project's features and is being constantly updated and maintained.
 
 # Graphql-Schema-Decorator
 
