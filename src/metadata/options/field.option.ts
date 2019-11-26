@@ -23,4 +23,9 @@ export interface FieldOption extends Option {
    * (Optional) If field's return is a pagination object
    */
   pagination?: boolean;
+
+  /**
+   * (Optional) Explicit field's name. If not provided the name of the field will be the same of the property
+   */
+  name?: string;
 }
