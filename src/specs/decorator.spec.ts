@@ -96,6 +96,12 @@ describe('Decorators', function () {
       assert(false);
 
     });
+
+    it('sets explicit name FieldTypeMetadata with name option', function () {
+      class Obj { @D.Field({ name: 'otherName' }) someField: any; }
+      const actual = getMetadataBuilder().buildFieldMetadata(Obj.prototype).find(value => value.name === 'otherName');
+      assert(typeof actual !== 'undefined');
+    });
   });
 
   describe('@Arg', function () {
