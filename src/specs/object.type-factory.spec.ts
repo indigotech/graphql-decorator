@@ -1,5 +1,4 @@
 import 'reflect-metadata';
-import { } from '../schema_factory';
 
 import * as D from '../decorator';
 import * as graphql from 'graphql';
@@ -44,7 +43,7 @@ describe('objectTypeFactory', function () {
     @D.InputObjectType()
     class Obj { @D.Field() title: string; }
     const GQLType: any = objectTypeFactory(Obj, true);
-    assert(GQLType._typeConfig.name === 'Obj');
+    assert(GQLType.name === 'Obj');
   });
 
   it('returns GraphQLInputObjectType with a class annotated by nested @InputObjectType objects', function () {
@@ -54,7 +53,7 @@ describe('objectTypeFactory', function () {
     @D.InputObjectType()
     class Obj { @D.Field() title: string; @D.Field({ type: Nested }) nested: Nested; }
     const GQLType: any = objectTypeFactory(Obj, true);
-    assert(GQLType._typeConfig.name === 'Obj');
+    assert(GQLType.name === 'Obj');
   });
 
   it('raises exception if nested @InputObjectType is undefined', function () {
