@@ -86,7 +86,7 @@ describe('schemaFactory', function () {
     assert.deepEqual(validate(schema, ast), []);
   });
 
-  it('returns a GraphQL schema object which is executable', async function (done: any) {
+  it('returns a GraphQL schema object which is executable', async function () {
     @D.ObjectType() class Query {
       @D.Field() title(): string { return 'hello'; }
     }
@@ -95,10 +95,9 @@ describe('schemaFactory', function () {
     const ast = parse(`query { title }`);
     const actual = await execute(schema, ast) as { data: { title: string } };
     assert(actual.data.title === 'hello');
-    done();
   });
 
-  it('returns a GraphQL schema object which is executable', async function (done: any) {
+  it('returns a GraphQL schema object which is executable', async function () {
     @D.ObjectType() class Query {
       @D.Field() twice( @D.Arg({ name: 'input' }) input: number): number {
         return input * 2;
@@ -110,10 +109,9 @@ describe('schemaFactory', function () {
     assert.deepEqual(validate(schema, ast), []);
     const actual = await execute(schema, ast) as { data: { twice: number } };
     assert(actual.data.twice === 2);
-    done();
   });
 
-  it('returns a GraphQL schema object which is executable', async function (done: any) {
+  it('returns a GraphQL schema object which is executable', async function () {
     @D.InputObjectType() class Input {
       @D.Field() a: number;
       @D.Field() b: number;
@@ -133,7 +131,6 @@ describe('schemaFactory', function () {
     assert.deepEqual(validate(schema, ast), []);
     const actual = await execute(schema, ast) as { data: { add: number } };
     assert(actual.data.add === 2);
-    done();
   });
 
   describe('Field type name duplication', async function () {
