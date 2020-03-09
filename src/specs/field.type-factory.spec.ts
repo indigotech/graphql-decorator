@@ -207,6 +207,13 @@ describe('field specs', function () {
         const actual = fieldTypeFactory(Obj, metadata);
         assert(!!actual.resolve);
       });
+
+      it('should not return resolve function for input object type', function () {
+        @D.InputObjectType()  class Obj { @D.Field() value: string }
+        const metadata = getMetadataBuilder().buildFieldMetadata(Obj.prototype)[0];
+        const actual = fieldTypeFactory(Obj, metadata);
+        assert(!('resolve' in actual));
+      });
     });
 
     describe('with explicit type', function () {
