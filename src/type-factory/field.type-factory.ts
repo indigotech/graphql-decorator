@@ -17,7 +17,7 @@ import { objectTypeFactory } from './object.type-factory';
 import { unionTypeFactory } from './union.type-factory';
 
 export interface ResolverHolder {
-    fn: Function;
+  fn: Function;
   argumentConfigMap: { [name: string]: any; };
 }
 
@@ -186,7 +186,19 @@ export function resolverFactory(
   };
 }
 
-export function fieldTypeFactory(target: Function, metadata?: FieldMetadata, isInput: boolean = false, isSubscription: boolean = false) {
+interface FieldType {
+  type: any,
+  description: string,
+  args: any;
+  subscribe: Function;
+  resolve?: Function;
+}
+
+export function fieldTypeFactory(
+  target: Function,
+  metadata?: FieldMetadata,
+  isInput: boolean = false,
+  isSubscription: boolean = false): FieldType {
   if (!metadata) { return null; }
 
   let typeFn = Reflect.getMetadata('design:type', target.prototype, metadata.name) as Function;
@@ -224,11 +236,16 @@ export function fieldTypeFactory(target: Function, metadata?: FieldMetadata, isI
 
   if (!fieldType) return null;
 
-  return {
+  const definition: FieldType = {
     type: fieldType,
     description: metadata.description,
     args: args,
-    resolve: resolveFn,
     subscribe: subscribeFn,
   };
+
+  if (resolveFn) {
+    definition.resolve = resolveFn;
+  }
+
+  return definition;
 }
